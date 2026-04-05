@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/favicon.jpg" type="images/x-icon">
+    <title>BMW</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Контент страницы -->
+     <!--div class="Home__content"></div-->
+     <img class="Home" src="images/Home.jpg">
+
+     <!-- Текст поверх фото -->
+     <div class="hero-text">
+        <h1>BMW — Удовольствие от вождения</h1>
+        <p>Мощь, стиль и инновации в каждой детали</p>
+        <a class="btn" href="#">Смотреть модели</a>
+     </div>
+
+     <!-- Три блока преимуществ -->
+     <div class="features">
+        <div class="feature-card">
+            <h2>🏎️ Производительность</h2>
+            <p>Двигатели BMW созданы для тех, кто ценит настоящую мощь и динамику на дороге.</p>
+        </div>
+        <div class="feature-card">
+            <h2>🎨 Дизайн</h2>
+            <p>Каждая линия кузова — результат работы лучших дизайнеров мира.</p>
+        </div>
+        <div class="feature-card">
+            <h2>🔧 Технологии</h2>
+            <p>Передовые системы безопасности делают каждую поездку особенной.</p>
+        </div>
+     </div>
+
+     <!-- СЛАЙДЕР -->
+     <div class="slider-section">
+        <h2 class="slider-title">Модели BMW</h2>
+
+        <div class="slider">
+
+            <!-- Кнопки -->
+            <button class="btn-prev" onclick="changeSlide(-1)">&#8592;</button>
+            <button class="btn-next" onclick="changeSlide(1)">&#8594;</button>
+
+            <!-- Счётчик -->
+            <div class="counter">
+                <span id="current">1</span> / <span id="total"></span>
+            </div>
+
+            <!-- Фотки -->
+            <div class="slides">
+                <div class="slide">
+                    <img src="images/car1.jpg" alt="BMW M3">
+                    <div class="car-info">
+                        <h3>BMW M3</h3>
+                        <p>Марка: BMW &nbsp;|&nbsp; Год: 2023</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="images/car2.jpg" alt="BMW X5">
+                    <div class="car-info">
+                        <h3>BMW X5</h3>
+                        <p>Марка: BMW &nbsp;|&nbsp; Год: 2022</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="images/car3.jpg" alt="BMW 7 Series">
+                    <div class="car-info">
+                        <h3>BMW 7 Series</h3>
+                        <p>Марка: BMW &nbsp;|&nbsp; Год: 2024</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+     </div>
+
+     <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+
+        document.getElementById('total').textContent = slides.length;
+
+        function changeSlide(direction) {
+            slides[currentIndex].style.display = 'none';
+
+            currentIndex += direction;
+
+            if (currentIndex < 0) currentIndex = slides.length - 1;
+            if (currentIndex >= slides.length) currentIndex = 0;
+
+            slides[currentIndex].style.display = 'block';
+            document.getElementById('current').textContent = currentIndex + 1;
+        }
+
+        // Скрываем все кроме первого
+        slides.forEach((slide, i) => {
+            if (i !== 0) slide.style.display = 'none';
+        });
+     </script>
+
+</body>
+</html>
